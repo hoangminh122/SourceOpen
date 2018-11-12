@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Slide;
+use App\Product;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -10,9 +11,11 @@ class PageController extends Controller
     public function getIndex()
     {
         $slide=Slide::all();
+        $new_product=Product::where('new',1)->get();
+
      //  print_r($slide);
        // exit();
-        return view('page.trangchu',compact('slide'));
+        return view('page.trangchu',compact('slide','new_product'));
 
 
         //return view('page.trangchu',['slide'=>$slide]);
