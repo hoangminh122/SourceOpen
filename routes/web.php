@@ -33,3 +33,11 @@ Route::get('chi-tiet-san-pham',[
     'as'=>'chitietsanpham',
     'uses'=>'PageController@getChitiet'
 ]);
+Route::get('lien-he',[
+    'as'=>'lienhe',
+    'uses'=>'PageController@getLienHe'
+]);
+Route::get('About',[
+    'as'=>'about',
+    'uses'=>'PageController@getAbout'
+]);
