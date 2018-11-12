@@ -12,10 +12,10 @@ class PageController extends Controller
         $slide=Slide::all();
      //  print_r($slide);
        // exit();
-       // return view('page.trangchu',compact('slide'));
+        return view('page.trangchu',compact('slide'));
 
 
-        return view('page.trangchu',['slide'=>$slide]);
+        //return view('page.trangchu',['slide'=>$slide]);
     }
     public function getLoaiSp(){
         return view('page.loai_sanpham');
