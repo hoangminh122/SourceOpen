@@ -11,11 +11,13 @@ class PageController extends Controller
     public function getIndex()
     {
         $slide=Slide::all();
-        $new_product=Product::where('new',1)->get();
+       // $new_product=Product::where('new',1)->get();
+        $new_product=Product::where('new',1)->paginate(4);
+        $sanpham_khuyenmai=Product::where('promotion_price','<>',0)->paginate(8);
 
      //  print_r($slide);
        // exit();
-        return view('page.trangchu',compact('slide','new_product'));
+        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
 
 
         //return view('page.trangchu',['slide'=>$slide]);
