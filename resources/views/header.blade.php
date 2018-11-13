@@ -4,8 +4,8 @@
         <div class="container">
             <div class="pull-left auto-width-left">
                 <ul class="top-menu menu-beta l-inline">
-                    <li><a href=""><i class="fa fa-home"></i> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</a></li>
-                    <li><a href=""><i class="fa fa-phone"></i> 0163 296 7751</a></li>
+                    <li><a href=""><i class="fa fa-home"></i> 36, Đường 76, Linh Đông ,Thủ Đức, Tp Hcm</a></li>
+                    <li><a href=""><i class="fa fa-phone"></i> 039.353.3533</a></li>
                 </ul>
             </div>
             <div class="pull-right auto-width-right">
@@ -94,9 +94,9 @@
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="#">Sản phẩm</a>
                         <ul class="sub-menu">
-                            <li><a href="product_type.html">Sản phẩm 1</a></li>
-                            <li><a href="product_type.html">Sản phẩm 2</a></li>
-                            <li><a href="product_type.html">Sản phẩm 4</a></li>
+                            @foreach($loai_sp as $loai)
+                            <li><a href="#">{{$loai->name}}</a></li>
+                           @endforeach
                         </ul>
                     </li>
                     <li><a href="about.html">Giới thiệu</a></li>
