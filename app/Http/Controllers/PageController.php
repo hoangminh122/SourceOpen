@@ -22,8 +22,15 @@ class PageController extends Controller
 
         //return view('page.trangchu',['slide'=>$slide]);
     }
-    public function getLoaiSp(){
-        return view('page.loai_sanpham');
+    public function getLoaiSp($type){
+        $sp_theoloai=Product::where('id_type',$type)->get();
+       // return view('page.loai_sanpham');
+        return view('page.loai_sanpham',compact('sp_theoloai'));
+    }
+    public function getLoaiSp1($minh){
+        $sp_theoloai1=Product::where('id_type',$minh)->get();
+        // return view('page.loai_sanpham1');
+        return view('page.lienhe',compact('sp_theoloai1'));
     }
     public function getChitiet()
     {

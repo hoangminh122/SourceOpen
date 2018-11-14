@@ -22,10 +22,10 @@ Route::get('about/{bien1}/{bien2}',function($bien3,$bien4) {
     return "$bien3 and $bien4";
 });
 Route::get('index',[
-    'as'=> 'trang-chu',
+    'as'=> 'trangchu',
     'uses'=>'PageController@getIndex'
 ]);
-Route::get('loai-sanpham',[
+Route::get('loai-sanpham/{type}',[
     'as'=>'loaisanpham',
     'uses'=>'PageController@getLoaiSp'
 ]);
@@ -38,6 +38,12 @@ Route::get('lien-he',[
     'uses'=>'PageController@getLienHe'
 ]);
 Route::get('About',[
-    'as'=>'about',
+    'as'=>'gioithieu',
     'uses'=>'PageController@getAbout'
 ]);
+Route::get('loai-sanpham1/{minh1}',
+    [
+        'as' => 'loaisanpham1',
+        'uses' => 'PageController@getLoaiSp1'
+    ]
+);
