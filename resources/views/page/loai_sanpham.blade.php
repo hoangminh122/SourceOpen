@@ -3,7 +3,7 @@
 <div class="inner-header">
     <div class="container">
         <div class="pull-left">
-            <h6 class="inner-title" style="font-style: italic">Sản phẩm {{$Tenloai->name}}</h6>
+            <h6 class="inner-title" style="font-style: italic">Sản phẩm </h6>
         </div>
         <div class="pull-right">
             <div class="beta-breadcrumb font-large">
@@ -41,7 +41,7 @@
                                         <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
                                     @endif
                                     <div class="single-item-header">
-                                        <a href="product.html"><img src="{{ URL::to('source/image/product/')}}/{{ $sp->image }}" alt="" height="250px" ></a>
+                                        <a href="{{route('chitietsanpham',$sp->id_type)}}"><img src="{{ URL::to('source/image/product/')}}/{{ $sp->image }}" alt="" height="250px" ></a>
                                     </div>
                                     <div class="single-item-body">
                                         <p class="single-item-title">{{$sp->name}}</p>
@@ -84,7 +84,7 @@
                                         <div class="ribbon-wrapper"><div class="sale ribbon"> Sale</div></div>
                                     @endif
                                     <div class="single-item-header">
-                                        <a href="product.html"><img src="{{ URL::to('source/image/product')}}/{{ $sp->image }}" alt=""></a>
+                                        <a href="{{route('chitietsanpham',$sp_k->id_type)}}"><img src="{{ URL::to('source/image/product')}}/{{ $sp_k->image }}" alt="" height="250px"></a>
                                     </div>
                                     <div class="single-item-body">
                                         <p class="single-item-title">{{$sp_k->name}}</p>

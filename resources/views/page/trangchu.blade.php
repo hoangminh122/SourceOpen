@@ -87,7 +87,7 @@
                             <div class="col-sm-3">
                                 <div class="single-item">
                                     <div class="single-item-header">
-                                        <a href="product.html"><img src="source/image/product/{{$sanpham->image}}" alt="" height="250px"></a>
+                                        <a href="{{route('chitietsanpham',$sanpham->id)}}"><img src="source/image/product/{{$sanpham->image}}" alt="" height="250px"></a>
                                     </div>
                                     <div class="single-item-body">
                                         <p class="single-item-title">{{$sanpham->name}}</p>

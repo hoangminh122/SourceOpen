@@ -24,6 +24,7 @@ class PageController extends Controller
         //return view('page.trangchu',['slide'=>$slide]);
     }
     public function getLoaiSp($type){
+
         $sp_theoloai=Product::where('id_type',$type)->get();
         //$sp_theoloai=Product::where('id_type',$type)->paginate(3);
         $sp_khac=Product::where('id_type','<>',$type)->paginate(3);
@@ -33,10 +34,15 @@ class PageController extends Controller
         return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','Tenloai'));
     }
 
-    public function getChitiet(Request $req)
+   // public function getChitiet(Request $req)
+    public function getChitiet($id)
     {
-        $sanpham=Product::where('id_type',$req->id)->first();
-        return view('page.chitiet_sanpham',compact('sanpham'));
+        $sanpham_khuyenmai1=Product::where('new','<>',0)->paginate(4);
+        $new_product1=Product::where('new',1)->paginate(4);
+        $sanpham=Product::where('id_type',$id)->first();
+      //  $sanpham=Product::where('id_type',$req->id)->first();
+        $sanphamtuongtu=Product::where('id_type',$sanpham->id_type)->paginate(3);
+        return view('page.chitiet_sanpham',compact('sanpham','sanphamtuongtu','sanpham_khuyenmai1','new_product1'));
     }
     public function getLienHe()
     {
