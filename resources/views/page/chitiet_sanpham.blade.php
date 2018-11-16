@@ -21,7 +21,7 @@
 
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="source/assets/dest/images/products/6.jpg" alt="">
+                            <img src="" alt="">
                         </div>
                         <div class="col-sm-8">
                             <div class="single-item-body">
