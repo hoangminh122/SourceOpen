@@ -96,7 +96,7 @@
 
                         <ul class="sub-menu">
                             @foreach($loai_sp as $loai)
-                            <li><a href="{{route('loaisanpham1',$loai->id)}}">{{$loai->name}}</a></li>
+                            <li><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>

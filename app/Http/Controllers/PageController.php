@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Slide;
 use App\Product;
 use Illuminate\Http\Request;
+use App\ProductType;
 
 class PageController extends Controller
 {
@@ -24,17 +25,18 @@ class PageController extends Controller
     }
     public function getLoaiSp($type){
         $sp_theoloai=Product::where('id_type',$type)->get();
+        //$sp_theoloai=Product::where('id_type',$type)->paginate(3);
+        $sp_khac=Product::where('id_type','<>',$type)->paginate(3);
        // return view('page.loai_sanpham');
-        return view('page.loai_sanpham',compact('sp_theoloai'));
+        $Tenloai=ProductType::where('id',$type)->first();
+        $loai=ProductType::all();
+        return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','Tenloai'));
     }
-    public function getLoaiSp1($minh){
-        $sp_theoloai1=Product::where('id_type',$minh)->get();
-        // return view('page.loai_sanpham1');
-        return view('page.lienhe',compact('sp_theoloai1'));
-    }
-    public function getChitiet()
+
+    public function getChitiet(Request $req)
     {
-        return view('page.chitiet_sanpham');
+        $sanpham=Product::where('id_type',$req->id)->first();
+        return view('page.chitiet_sanpham',compact('sanpham'));
     }
     public function getLienHe()
     {
