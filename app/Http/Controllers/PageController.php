@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Slide;
 use App\Product;
 use Illuminate\Http\Request;
 use App\ProductType;
-
+use Illuminate\Support\Facades\Session;
 class PageController extends Controller
 {
     public function getIndex()
@@ -51,5 +52,14 @@ class PageController extends Controller
     public function getAbout()
     {
         return view('page.about');
+    }
+    public function getAddtoCart(Request $req,$id)
+    {
+        $product=Product::find($id);
+        $oldCart=Session('cart')?Session::get('cart'):null;
+        $cart=new Cart($oldCart);
+        $cart->add($product,$id);
+        $req->session()->put('cart',$cart);
+        return redirect()->back();
     }
 }
