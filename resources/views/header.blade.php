@@ -1,5 +1,6 @@
 
 <div id="header">
+
     <div class="header-top">
         <div class="container">
             <div class="pull-left auto-width-left">
@@ -11,8 +12,8 @@
             <div class="pull-right auto-width-right">
                 <ul class="top-details menu-beta l-inline">
                     <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
-                    <li><a href="#">Đăng kí</a></li>
-                    <li><a href="#">Đăng nhập</a></li>
+                    <li><a href="{{route('signin')}}">Đăng kí</a></li>
+                    <li><a href="{{route('login')}}">Đăng nhập</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -26,40 +27,44 @@
             <div class="pull-right beta-components space-left ov">
                 <div class="space10">&nbsp;</div>
                 <div class="beta-comp">
-                    <form role="search" method="get" id="searchform" action="/">
-                        <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+                    <form role="search" method="get" id="searchform" action="{{route('Search')}}">
+                        <input type="text" value="" name="key" id="s" placeholder="Nhập từ khóa..." />
                         <button class="fa fa-search" type="submit" id="searchsubmit"></button>
                     </form>
                 </div>
 
                 <div class="beta-comp">
+                   
                     <div class="cart">
                         <div class="beta-select"><i class="fa fa-shopping-cart"></i>Giỏ hàng (@if(Session::has('cart')){{Session('cart')->totalQty}} @else Trống @endif  <i class="fa fa-chevron-down"></i></div>
                         <div class="beta-dropdown cart-body">
-                            @foreach($product_cart as $product)
+                             @if(Session::has('cart'))
+                          @foreach($product_cart as $product )
                             <div class="cart-item">
+                                <a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-times"></i></a>
                                 <div class="media">
-                                    <a class="pull-left" href="#"><img src="{{ URL::to('source/image/product')}}/{{$product['item']['image']}}" alt=""></a>
+                                    <a class="pull-left" href="{{route('themgiohang',$product['item']['id'])}}"><img src="{{URL::to('source/image/product')}}/{{$product['item']['image']}}" alt=""></a>
                                     <div class="media-body">
                                         <span class="cart-item-title">{{$product['item']['name']}}</span>
 
-                                        <span class="cart-item-amount">{{$product['qty']}}*<span> {{$product['item']['unit_price']}}</span></span>
+                                        <span class="cart-item-amount">{{$product['qty']}}*@if($product['item']['promotion_price']==0){{$product['item']['unit_price']}}đ @else {{$product['item']['promotion_price']}}đ @endif </span></span>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-
-
-
+                          
+                          @endforeach
+                              @endif
+                            @if(Session::has('cart'))
                             <div class="cart-caption">
-                                <div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{Session('cart')->totalPrice}}</span></div>
+                                <div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{number_format(Session('cart')->totalPrice)}}đ</span></div>
                                 <div class="clearfix"></div>
 
                                 <div class="center">
                                     <div class="space10">&nbsp;</div>
-                                    <a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+                                    <a href="{{route('dathang')}}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
                                 </div>
                             </div>
+                            @endif
                         </div>
 
 
@@ -68,6 +73,7 @@
 
 
                 </div>
+              
             </div>
             <div class="clearfix"></div>
         </div> <!-- .container -->
