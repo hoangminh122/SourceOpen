@@ -62,10 +62,22 @@ Route::post('dang-ki',[
 'as'=>'signin',
 'uses'=>'PageController@postSignin']);
 Route::post('dang-nhap',[
-'as'=>'login',
+'as'=>'postlogin',
 'uses'=>'PageController@postLogin']);
 Route::get('timkiem',[
 'as'=>'Search',
 'uses'=>'PageController@getSearch']);
-Route::get('demo','PageController@demo');
+Route::get('admin_sp',['as'=>'admin_sp','uses'=>'PageController@demo']);
+Route::get('admin_getaddsp',['as'=>'admin_getaddsp','uses'=>'PageController@get_add_spmoi']);
+Route::post('admin_postaddsp',['as'=>'admin_postaddsp','uses'=>'PageController@post_add_spmoi']);
+Route::get('admin_getupdatesp/{id}',['as'=>'admin_getupdatesp','uses'=>'PageController@get_update_spmoi']);
+Route::post('admin_postupdatesp/{id}',['as'=>'admin_postupdatesp','uses'=>'PageController@post_update_spmoi']);
+Route::get('admin_getdel/{id}',['as'=>'admin_getdel','uses'=>'PageController@getdel']);
+Route::get('admin_getdelUser/{id}',['as'=>'admin_getdelUser','uses'=>'PageController@getdelUser']);
+Route::get('user_list',['as'=>'getuser_list','uses'=>'PageController@getuser_list']);
+
+
+
+
+
 
