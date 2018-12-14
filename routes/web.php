@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+    //return view('welcome');
+//});
 Route::get('minh/mi',function()
 {
     return "hekdhakj";
@@ -21,7 +21,7 @@ Route::get('minh/mi',function()
 Route::get('about/{bien1}/{bien2}',function($bien3,$bien4) {
     return "$bien3 and $bien4";
 });
-Route::get('index',[
+Route::get('/',[
     'as'=> 'trangchu',
     'uses'=>'PageController@getIndex'
 ]);
